@@ -1,0 +1,27 @@
+data:
+  dataset: synthetic          # synthetic | metr-la | pems04
+  data_dir: data
+  n_sensors: 20               # N
+  n_days: 30
+  interval_minutes: 5         # 每天 288 步，共 8640 步
+  input_window: 12            # T，过去 1 小时
+  pred_horizon: 12            # H，未来 1 小时
+  train_ratio: 0.7
+  val_ratio: 0.1
+  batch_size: 32
+  real_data_path: ""          # 真实数据 npy/npz 路径，synthetic 时忽略
+model:
+  n_features: 2               # flow + speed
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  d_ff: 128
+  dropout: 0.1
+training:
+  epochs: 30
+  lr: 0.001
+  weight_decay: 0.0001
+  early_stop_patience: 6
+  device: cpu
+  checkpoint_dir: results/checkpoints
+  seed: 42
